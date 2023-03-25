@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Matches
+{% endblock %}
+
+{% block body %}
+    <h4><i>A regex101 clone</i></h4>
+    <form action="{{ url_for('matches') }}" method="POST">
+        <p>Regular Expression:</p>
+        <input type="text" name="regular_expression" placeholder="Enter a regular expression"><br>
+        <p>Test String:</p>
+        <input type="text" name="test_string" placeholder="Enter the test string"> <br><br>
+        <input class="test" type="submit" value="Test"><br><br>
+    </form>
+
+
+    {% if matches %}
+        <h3><i>Matched Strings:</i></h3>
+        <ul style="list-style: none; text-align: center";>
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
